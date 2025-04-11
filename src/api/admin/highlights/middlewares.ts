@@ -3,7 +3,7 @@ import {
   MiddlewareRoute,
 } from "@medusajs/framework";
 
-import { adminHighlightsQueryConfig } from "./query-config";
+import {adminHighlightsQueryConfig} from "./query-config";
 import {
   adminGetHighlightParams,
   adminGetHighlightsParams,
@@ -11,7 +11,7 @@ import {
 
 export const highlightsMiddlewares: MiddlewareRoute[] = [
   {
-    method: "GET",
+    methods: ["GET"],
     matcher: "/admin/highlights",
     middlewares: [
       validateAndTransformQuery(
@@ -21,7 +21,7 @@ export const highlightsMiddlewares: MiddlewareRoute[] = [
     ],
   },
   {
-    method: "GET",
+    methods: ["GET"],
     matcher: "/admin/highlights/:id",
     middlewares: [
       validateAndTransformQuery(

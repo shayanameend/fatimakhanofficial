@@ -7,17 +7,17 @@ export async function GET(
 ): Promise<void> {
   const query = req.scope.resolve(ContainerRegistrationKeys.QUERY);
 
-  const { data: highlights, metadata: { count, take, skip } = {} } =
-    await query.graph({
-      entity: "highlight",
-      fields: req.queryConfig.fields,
-      pagination: req.queryConfig.pagination,
-    });
+  const {
+    data: [highlight],
+  } = await query.graph({
+    entity: "highlight",
+    fields: req.queryConfig.fields,
+    filters: {
+      id: req.params.id,
+    },
+  });
 
   res.json({
-    highlights,
-    count,
-    limit: take,
-    offset: skip,
+    highlight,
   });
 }

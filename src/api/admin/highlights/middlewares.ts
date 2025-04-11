@@ -3,8 +3,11 @@ import {
   MiddlewareRoute,
 } from "@medusajs/framework";
 
-import { adminHighlightsConfig } from "./query-config";
-import { adminGetHighlightsParams } from "./validators";
+import { adminHighlightsQueryConfig } from "./query-config";
+import {
+  adminGetHighlightParams,
+  adminGetHighlightsParams,
+} from "./validators";
 
 export const highlightsMiddlewares: MiddlewareRoute[] = [
   {
@@ -13,7 +16,7 @@ export const highlightsMiddlewares: MiddlewareRoute[] = [
     middlewares: [
       validateAndTransformQuery(
         adminGetHighlightsParams,
-        adminHighlightsConfig.list
+        adminHighlightsQueryConfig.list
       ),
     ],
   },
@@ -21,7 +24,10 @@ export const highlightsMiddlewares: MiddlewareRoute[] = [
     method: "GET",
     matcher: "/admin/highlights/:id",
     middlewares: [
-      // validateAndTransformQuery(null, adminHighlightsConfig.retrieve),
+      validateAndTransformQuery(
+        adminGetHighlightParams,
+        adminHighlightsQueryConfig.retrieve
+      ),
     ],
   },
 ];

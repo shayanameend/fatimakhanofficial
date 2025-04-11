@@ -6,7 +6,7 @@ export const adminHighlightsFields = [
   "updated_at",
 ];
 
-export const adminHighlightsConfig = {
+export const adminHighlightsQueryConfig = {
   list: {
     defaults: adminHighlightsFields,
     isList: true,

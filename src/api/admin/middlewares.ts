@@ -1,3 +1,5 @@
-import type { MiddlewareRoute } from "@medusajs/framework";
+import { MiddlewareRoute } from "@medusajs/framework";
 
-export const adminMiddlewares: MiddlewareRoute[] = [];
+import { highlightsMiddlewares } from "./highlights/middlewares";
+
+export const adminMiddlewares: MiddlewareRoute[] = [...highlightsMiddlewares];

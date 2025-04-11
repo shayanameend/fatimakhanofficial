@@ -11,10 +11,10 @@ export async function GET(
     data: [highlight],
   } = await query.graph({
     entity: "highlight",
-    fields: req.queryConfig.fields,
     filters: {
       id: req.params.id,
     },
+    fields: req.queryConfig.fields,
   });
 
   res.json({
